@@ -1,0 +1,11 @@
+*~
+#*
+target
+.antlr
+__pycache__
+miParser*.java
+compiladores*.py
+*.out
+*.class
+*.jar
+*.tokens
