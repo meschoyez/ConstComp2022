@@ -6,6 +6,11 @@ fragment LETRA : [A-Za-z] ;
 
 PA : '(' ;
 PC : ')' ;
+LLA : '{' ;
+LLC : '}' ;
+PYC : ';' ;
+
+INT : 'int' ;
 
 ID : (LETRA | '_')(LETRA | DIGITO | '_')* ;
 NUMERO : DIGITO+ ;
@@ -13,11 +18,30 @@ NUMERO : DIGITO+ ;
 WS : [ \n\t\r] -> skip ;
 OTRO : . ;
 
-si : s EOF ;
+programa : instrucciones EOF ;
 
-s : PA s PC s
-  |
-  ;
+instrucciones : instruccion instrucciones
+              |
+              ;
+
+instruccion : bloque
+            | declaracion
+            // | asignacion
+            // | ireturn
+            // | inst_if
+            // | inst_for
+            // | inst_while
+            ;
+
+bloque : LLA instrucciones LLC ;
+
+declaracion : INT ID PYC ;
+
+// si : s EOF ;
+
+// s : PA s PC s
+//   |
+//   ;
 
 //  s : ID { System.out.println("ID ->" + $ID.getText() + "<--"); } s
 //   | NUMERO { System.out.println("NUMERO ->" + $NUMERO.getText() + "<--"); } s
