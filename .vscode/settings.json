@@ -1,7 +1,7 @@
 {
     // Generacion archivos ANTLR en el paquete Java
     "antlr4.generation": {
-        "mode": "external",
+        "mode": "internal",
         "language": "Java",
         "listeners": true,
         "visitors": true

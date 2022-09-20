@@ -1,5 +1,8 @@
 grammar miParser;
 
+@header{
+package const_comp;    
+}
 
 fragment DIGITO : [0-9] ;
 fragment LETRA : [A-Za-z] ;
@@ -9,6 +12,8 @@ PC : ')' ;
 LLA : '{' ;
 LLC : '}' ;
 PYC : ';' ;
+SUMA : '+' ;
+MULT : '*' ;
 
 INT : 'int' ;
 
@@ -36,6 +41,27 @@ instruccion : bloque
 bloque : LLA instrucciones LLC ;
 
 declaracion : INT ID PYC ;
+
+opar : exp opar
+     | EOF
+     ;
+
+exp : term t ;
+
+term : factor f ;
+
+t : SUMA term t
+  |
+  ;
+
+factor : NUMERO
+       | ID
+       | PA exp PC
+       ;
+
+f : MULT factor f
+  |
+  ;
 
 // si : s EOF ;
 
