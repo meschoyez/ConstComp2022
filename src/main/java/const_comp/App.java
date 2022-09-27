@@ -11,7 +11,8 @@ public class App {
         System.out.println("Hello, Compilador!!!");
         // create a CharStream that reads from file
         // CharStream input = CharStreams.fromFileName("input/entrada.txt");
-        CharStream input = CharStreams.fromFileName("input/parentesis.txt");
+        // CharStream input = CharStreams.fromFileName("input/parentesis.txt");
+        CharStream input = CharStreams.fromFileName("input/contextos.txt");
 
         // create a lexer that feeds off of input CharStream
         miParserLexer lexer = new miParserLexer(input);
@@ -23,14 +24,14 @@ public class App {
         miParserParser parser = new miParserParser(tokens);
                 
         // create Listener
-        // ExpRegBaseListener escucha = new Escucha();
+        miParserBaseListener escucha = new Escucha();
 
         // Conecto el objeto con Listeners al parser
-        // parser.addParseListener(escucha);
+        parser.addParseListener(escucha);
 
         // Solicito al parser que comience indicando una regla gramatical
         // En este caso la regla es el simbolo inicial
-        parser.opar();
+        parser.programa();
         // ParseTree tree =  parser.s();
         // Conectamos el visitor
         // Caminante visitor = new Caminante();
