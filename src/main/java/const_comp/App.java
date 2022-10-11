@@ -31,15 +31,15 @@ public class App {
 
         // Solicito al parser que comience indicando una regla gramatical
         // En este caso la regla es el simbolo inicial
-        parser.programa();
-        // ParseTree tree =  parser.s();
+        // parser.programa();
+        ParseTree tree = parser.programa();
         // Conectamos el visitor
-        // Caminante visitor = new Caminante();
-        // visitor.visit(tree);
-        // System.out.println(visitor);
+        Caminante visitor = new Caminante();
+        visitor.visit(tree);
+        System.out.println(visitor);
         // System.out.println(visitor.getErrorNodes());
         // Imprime el arbol obtenido
-        // System.out.println(tree.toStringTree(parser));
+        System.out.println(tree.toStringTree(parser));
         // System.out.println(escucha);
         
     }

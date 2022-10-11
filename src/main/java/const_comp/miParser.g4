@@ -28,6 +28,7 @@ programa : instrucciones EOF ;
 instrucciones : instruccion instrucciones
               |
               ;
+            
 
 instruccion : bloque
             | declaracion
